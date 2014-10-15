@@ -550,6 +550,43 @@ longest </code></pre>
 <section data-background="#000"></section>
 <section>
   <h2>
+    Enumerable#include?
+  </h2>
+  <p>
+    Returns true if any member of collection equals a target object
+  </p>
+</section>
+<section>
+  <h2>
+    Enumerable#include?
+  </h2>
+  <p>
+    Equality is tested using ==
+  </p>
+</section>
+<section class="center">
+  <pre><code class="ruby" contenteditable="">module Enumerable
+  def include?(obj)
+    # Your code goes here.
+  end
+end </code></pre>
+</section>
+<section class="center">
+  <pre><code class="ruby">module Enumerable
+  def include?(obj)
+    each { |element| return true if element == obj }
+    false
+  end
+end </code></pre>
+</section>
+<section data-background="#000"></section>
+<section class="center" data-background="#000">
+  <p class="white">
+    Implementing #each turns a class into a collection
+  </p>
+</section>
+<section>
+  <h2>
     Enumerable#each
   </h2>
   <pre><code class="ruby">class Count

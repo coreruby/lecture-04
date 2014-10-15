@@ -444,6 +444,39 @@ section
 section data-background="#000"
 
 section
+  h2 Enumerable#include?
+  p Returns true if any member of collection equals a target object
+
+section
+  h2 Enumerable#include?
+  p Equality is tested using ==
+
+section.center
+  pre: code.ruby contenteditable=true
+    '
+      module Enumerable
+        def include?(obj)
+          # Your code goes here.
+        end
+      end
+
+section.center
+  pre: code.ruby
+    '
+      module Enumerable
+        def include?(obj)
+          each { |element| return true if element == obj }
+          false
+        end
+      end
+
+section data-background="#000"
+
+
+section.center data-background="#000"
+  p.white Implementing #each turns a class into a collection
+
+section
   h2 Enumerable#each
   pre: code.ruby
     '
