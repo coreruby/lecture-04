@@ -291,9 +291,6 @@ section.center
           result
         end
 
-section.center data-background="#000"
-  p.white Implementing #each turns a class into a collection
-
 section
   h2 Enumerable#select
   p Returns an array containing all elements of the collection for which the given block returns a true value
@@ -345,6 +342,37 @@ section.center
           select { |number| number.prime? }
         end
       end
+
+section
+  h2 Enumerable#select
+  p Let's generalize it
+
+section.center
+  pre: code.ruby contenteditable=true
+    '
+      module Enumerable
+        def select
+          # Your code goes here.
+        end
+      end
+
+section.center
+  pre: code.ruby
+    '
+      module Enumerable
+        def select
+          result = []
+          each { |element| result << element if yield(element) }
+          result
+        end
+      end
+
+section
+  h2 Enumerable#select
+  p Let's checkout how <a href="https://github.com/rubinius/rubinius/blob/master/kernel/common/enumerable.rb#L450-L461">Rubinius implemented it
+
+section.center data-background="#000"
+  p.white Implementing #each turns a class into a collection
 
 section
   h2 Enumerable#each

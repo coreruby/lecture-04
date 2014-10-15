@@ -384,11 +384,6 @@ end </code></pre>
   result
 end </code></pre>
 </section>
-<section class="center" data-background="#000">
-  <p class="white">
-    Implementing #each turns a class into a collection
-  </p>
-</section>
 <section>
   <h2>
     Enumerable#select
@@ -449,6 +444,43 @@ class Range
     select { |number| number.prime? }
   end
 end </code></pre>
+</section>
+<section>
+  <h2>
+    Enumerable#select
+  </h2>
+  <p>
+    Let's generalize it
+  </p>
+</section>
+<section class="center">
+  <pre><code class="ruby" contenteditable="">module Enumerable
+  def select
+    # Your code goes here.
+  end
+end </code></pre>
+</section>
+<section class="center">
+  <pre><code class="ruby">module Enumerable
+  def select
+    result = []
+    each { |element| result << element if yield(element) }
+    result
+  end
+end </code></pre>
+</section>
+<section>
+  <h2>
+    Enumerable#select
+  </h2>
+  <p>
+    Let's checkout how <a href="https://github.com/rubinius/rubinius/blob/master/kernel/common/enumerable.rb#L450-L461">Rubinius implemented it
+  </p>
+</section>
+<section class="center" data-background="#000">
+  <p class="white">
+    Implementing #each turns a class into a collection
+  </p>
 </section>
 <section>
   <h2>
