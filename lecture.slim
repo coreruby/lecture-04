@@ -295,6 +295,58 @@ section.center data-background="#000"
   p.white Implementing #each turns a class into a collection
 
 section
+  h2 Enumerable#select
+  p Returns an array containing all elements of the collection for which the given block returns a true value
+
+section
+  h2 Enumerable#select
+  p We talked about it as filter
+
+section
+  h2 Enumerable#select
+  p Its just naming, the idea is the same
+
+section.center data-background="#000"
+  pre.white
+    '
+
+      [ a1,          a2,          a3          ... an          ]
+        |            |            |               |
+        |            |            |               |
+        |            |            |               |
+        |            |            |               |
+        |            |            |               |
+        .            .            .               .
+
+      [ a1 if f(a1), a2 if f(a2), a3 if f(a3) ... an if f(an) ]
+
+section
+  h2 Enumerable#select
+  p The idea is to filter only the elements we need for future operation
+
+section.center
+  pre: code.ruby contenteditable=true
+    '
+      require 'prime'
+
+      class Range
+        def primes
+          # Your code goes here.
+        end
+      end
+
+section.center
+  pre: code.ruby
+    '
+      require 'prime'
+
+      class Range
+        def primes
+          select { |number| number.prime? }
+        end
+      end
+
+section
   h2 Enumerable#each
   pre: code.ruby
     '
