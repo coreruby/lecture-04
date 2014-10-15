@@ -295,6 +295,8 @@ section.center
           result
         end
 
+section data-background="#000"
+
 section
   h2 Enumerable#select
   p Returns an array containing all elements of the collection for which the given block returns a true value
@@ -377,6 +379,67 @@ section
 
 section.center data-background="#000"
   p.white Implementing #each turns a class into a collection
+
+section
+  h2 Enumerable#reduce
+  p Reduces a collection of elements into a single result
+
+section.center data-background="#000"
+  pre.white
+    '
+      a0: initial value; f: operation
+
+      f(a0, a1)
+
+section.center data-background="#000"
+  pre.white
+    '
+      a0: initial value; f: operation
+
+      f(f(a0, a1), a2)
+
+section.center data-background="#000"
+  pre.white
+    '
+      a0: initial value; f: operation
+
+      f(f(f(a0, a1), a2), a3)
+
+section.center data-background="#000"
+  pre.white
+    '
+      a0: initial value; f: operation
+
+      f(f(f(a0, a1), a2), a3)
+
+section.center data-background="#000"
+  pre.white
+    '
+      a0: 0 f: +
+
+      (((1 + 2) + 3) + 4) + 5
+
+section
+  h2 Enumerable#reduce
+  pre: code.ruby contenteditable=true
+    '
+      # Sum some numbers
+      (5..10).reduce(:+)                             #=> 45
+
+      # Same using a block and inject
+      (5..10).inject { |sum, n| sum + n }            #=> 45
+
+      # Multiply some numbers
+      (5..10).reduce(1, :*)                          #=> 151200
+
+      # Same using a block
+      (5..10).inject(1) { |product, n| product * n } #=> 151200
+
+      # find the longest word
+      longest = %w{ cat sheep bear }.inject do |memo, word|
+         memo.length > word.length ? memo : word
+      end
+      longest
 
 section data-background="#000"
 
