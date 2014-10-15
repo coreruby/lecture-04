@@ -177,6 +177,14 @@ end </code></pre>
   <h2>
     Enumerable#each
   </h2>
+  <pre><code class="ruby">{'Genadi' => 'Samokovarov', 'Radoslav' => 'Georgiev'}.each do |first_name, last_name|
+  send_email(first_name, last_name)
+end </code></pre>
+</section>
+<section>
+  <h2>
+    Enumerable#each
+  </h2>
   <p>
     We (usually) don't use the result of each
   </p>
@@ -219,7 +227,7 @@ end </code></pre>
   <h2>
     Enumerable#each
   </h2>
-  <pre><code class="ruby">counter = Counter.new(3)
+  <pre><code class="ruby">counter = Counter.new(5)
 counter.each { |time| puts time } </code></pre>
 </section>
 <section class="center" data-background="#000">

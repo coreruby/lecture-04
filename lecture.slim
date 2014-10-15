@@ -118,6 +118,14 @@ section
 
 section
   h2 Enumerable#each
+  pre: code.ruby
+    '
+      {'Genadi' => 'Samokovarov', 'Radoslav' => 'Georgiev'}.each do |first_name, last_name|
+        send_email(first_name, last_name)
+      end
+
+section
+  h2 Enumerable#each
   p We (usually) don't use the result of each
 
 section.center data-background="#000"
@@ -150,9 +158,8 @@ section
   h2 Enumerable#each
   pre: code.ruby
     '
-      counter = Counter.new(3)
+      counter = Counter.new(5)
       counter.each { |time| puts time }
-
 
 section.center data-background="#000"
   p A good <a href="http://phrogz.net/programmingruby/tut_containers.html#blocksanditerators">read</a> for blocks and iterators in Ruby
