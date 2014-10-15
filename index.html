@@ -50,6 +50,23 @@ end </code></pre>
   # ...
 end </code></pre>
 </section>
+<section>
+  <h2>
+    Gotchas
+  </h2>
+  <pre><code class="ruby">class Array
+  def to_hash
+    hash = {}
+    map { |pair| hash[pair[0]] = pair[1]
+    hash
+  end
+end </code></pre>
+</section>
+<section class="center" data-background="#000">
+  <p>
+    This is still Enumerable#each
+  </p>
+</section>
 <section class="center" data-background="#000">
   <h2>
     Questions
