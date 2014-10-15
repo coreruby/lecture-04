@@ -294,10 +294,94 @@ end </code></pre>
 end </code></pre>
 </section>
 <section class="center">
+  <pre><code class="ruby">class Array
+  def cubes
+    map { |number| number ** 3 }
+  end
+end </code></pre>
+</section>
+<section>
+  <h2>
+    Enumerable#map
+  </h2>
+  <p>
+    How does it relates to each?
+  </p>
+</section>
+<section class="center">
   <pre><code class="ruby" contenteditable="">class Array
   def cubes
     map { |number| number ** 3 }
   end
+end </code></pre>
+</section>
+<section class="center">
+  <pre><code class="ruby">class Array
+  def cubes
+    cubes = []
+    each { |number| cubes << number ** 3 }
+    cubes
+  end
+end </code></pre>
+</section>
+<section>
+  <h2>
+    Enumerable#map
+  </h2>
+  <p>
+    Let's generalize it
+  </p>
+</section>
+<section class="center">
+  <pre><code class="ruby" contenteditable="">module Enumerable
+  def map
+    # Your code goes here.
+  end
+end </code></pre>
+</section>
+<section class="center">
+  <pre><code class="ruby">module Enumerable
+  def map
+    result = []
+    each { |element| result << yield(element) }
+    result
+  end
+end </code></pre>
+</section>
+<section>
+  <h2>
+    Enumerable#map
+  </h2>
+  <p>
+    Its nothing more than that
+  </p>
+</section>
+<section>
+  <h2>
+    Enumerable#map
+  </h2>
+  <p>
+    Let's checkout how <a href="https://github.com/rubinius/rubinius/blob/master/kernel/common/enumerable.rb#L45-L57">Rubinius implemented it
+  </p>
+</section>
+<section>
+  <h2>
+    Enumerable#collect
+  </h2>
+  <p>
+    Its just naming, Enumerable#collect == Enumerable#map
+  </p>
+</section>
+<section class="center" data-background="#000">
+  <p>
+    Look for this pattern in your code and convert it to Enumerable#map
+  </p>
+</section>
+<section class="center">
+  <pre><code class="ruby">def transform(data)
+  result = []
+  data.each { |element| result << operation(element) }
+  result
 end </code></pre>
 </section>
 <section class="center" data-background="#000">
