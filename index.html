@@ -63,7 +63,7 @@ end </code></pre>
 end </code></pre>
 </section>
 <section class="center" data-background="#000">
-  <p>
+  <p class="white">
     This is still Enumerable#each
   </p>
 </section>
@@ -98,7 +98,7 @@ end </code></pre>
   </p>
 </section>
 <section class="center" data-background="#000">
-  <h2>
+  <h2 class="white">
     Challenge
   </h2>
 </section>
@@ -190,21 +190,16 @@ end </code></pre>
   </p>
 </section>
 <section class="center" data-background="#000">
-  <h2>
+  <h2 class="white">
     Definition
   </h2>
 </section>
-<class>
+<section>
   <h2>
     Side Effect
   </h2>
   <p>
     An expression, that isn't used for its result is a side effect
-  </p>
-</class>
-<section class="center" data-background="#000">
-  <p>
-    Implementing #each turns a class into a collection
   </p>
 </section>
 <section>
@@ -279,6 +274,35 @@ end </code></pre>
   </h2>
   <p>
     Creates a new array containing the values returned by the block.
+  </p>
+</section>
+<section class="center" data-background="#000">
+  <pre class="white">[  a1,   a2,    a3,    a4    ...    an ]
+   |      |      |      |           |
+   |      |      |      |           |
+   |      |      |      |           |
+   |      |      |      |           |
+   |      |      |      |           |
+   .      .      .      .           .
+[f(a1), f(a2), f(a3), f(a4)  ...  f(an)] </pre>
+</section>
+<section class="center">
+  <pre><code class="ruby" contenteditable="">class Array
+  def cubes
+    # Your code goes here.
+  end
+end </code></pre>
+</section>
+<section class="center">
+  <pre><code class="ruby" contenteditable="">class Array
+  def cubes
+    map { |number| number ** 3 }
+  end
+end </code></pre>
+</section>
+<section class="center" data-background="#000">
+  <p class="white">
+    Implementing #each turns a class into a collection
   </p>
 </section>
 <section>
