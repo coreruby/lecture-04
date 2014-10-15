@@ -88,4 +88,71 @@ section
   p Write me a method that yields the numbers: 1..n and their squares and their cubes
 
 section.center data-background="#000"
+  h2.white Iteration
+
+section
+  h2 Enumerable#each
+  p The heart of it all
+
+section
+  h2 Enumerable#each
+  p Every other method in Enumerable is implemented in the terms of #each
+
+section
+
+section
+  h2 Enumerable#each
+  p Executes its block for each element in the collection
+
+section
+  h2 Enumerable#each
+  p Nothing less, nothing more
+
+section
+  h2 Enumerable#each
+  pre: code.ruby
+    '
+      ['Vitalii', 'Stamat', 'Larodi'].each do |person|
+        send_email(person)
+      end
+
+section
+  h2 Enumerable#each
+  p We (usually) don't use the result of each
+
+section.center data-background="#000"
+  h2 Definition
+
+class
+  h2 Side Effect
+  p An expression, that isn't used for its result is a side effect
+
+section.center data-background="#000"
+  p Implementing #each turns a class into a collection
+
+section
+  h2 Enumerable#each
+  pre: code.ruby
+    '
+      class Count
+        include Enumerable
+
+        def initialize(count)
+          @count = count
+        end
+
+        def each
+          @count.times { |iteration| yield iteration }
+        end
+      end
+
+section
+  h2 Enumerable#each
+  pre: code.ruby
+    '
+      counter = Counter.new(3)
+      counter.each { |time| puts time }
+
+
+section.center data-background="#000"
   p A good <a href="http://phrogz.net/programmingruby/tut_containers.html#blocksanditerators">read</a> for blocks and iterators in Ruby

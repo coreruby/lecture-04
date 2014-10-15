@@ -128,6 +128,101 @@ end </code></pre>
   </p>
 </section>
 <section class="center" data-background="#000">
+  <h2 class="white">
+    Iteration
+  </h2>
+</section>
+<section>
+  <h2>
+    Enumerable#each
+  </h2>
+  <p>
+    The heart of it all
+  </p>
+</section>
+<section>
+  <h2>
+    Enumerable#each
+  </h2>
+  <p>
+    Every other method in Enumerable is implemented in the terms of #each
+  </p>
+</section>
+<section></section>
+<section>
+  <h2>
+    Enumerable#each
+  </h2>
+  <p>
+    Executes its block for each element in the collection
+  </p>
+</section>
+<section>
+  <h2>
+    Enumerable#each
+  </h2>
+  <p>
+    Nothing less, nothing more
+  </p>
+</section>
+<section>
+  <h2>
+    Enumerable#each
+  </h2>
+  <pre><code class="ruby">['Vitalii', 'Stamat', 'Larodi'].each do |person|
+  send_email(person)
+end </code></pre>
+</section>
+<section>
+  <h2>
+    Enumerable#each
+  </h2>
+  <p>
+    We (usually) don't use the result of each
+  </p>
+</section>
+<section class="center" data-background="#000">
+  <h2>
+    Definition
+  </h2>
+</section>
+<class>
+  <h2>
+    Side Effect
+  </h2>
+  <p>
+    An expression, that isn't used for its result is a side effect
+  </p>
+</class>
+<section class="center" data-background="#000">
+  <p>
+    Implementing #each turns a class into a collection
+  </p>
+</section>
+<section>
+  <h2>
+    Enumerable#each
+  </h2>
+  <pre><code class="ruby">class Count
+  include Enumerable
+
+  def initialize(count)
+    @count = count
+  end
+
+  def each
+    @count.times { |iteration| yield iteration }
+  end
+end </code></pre>
+</section>
+<section>
+  <h2>
+    Enumerable#each
+  </h2>
+  <pre><code class="ruby">counter = Counter.new(3)
+counter.each { |time| puts time } </code></pre>
+</section>
+<section class="center" data-background="#000">
   <p>
     A good <a href="http://phrogz.net/programmingruby/tut_containers.html#blocksanditerators">read</a> for blocks and iterators in Ruby
   </p>
