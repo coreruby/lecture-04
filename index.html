@@ -580,6 +580,54 @@ end </code></pre>
 end </code></pre>
 </section>
 <section data-background="#000"></section>
+<section>
+  <h2>
+    Enumerable#any?
+  </h2>
+  <p>
+    Passes each element of the collection to the given block.
+  </p>
+</section>
+<section>
+  <h2>
+    Enumerable#any?
+  </h2>
+  <p>
+    The method returns true if the block ever returns a value other than false or nil.
+  </p>
+</section>
+<section>
+  <h2>
+    Enumerable#any?
+  </h2>
+  <p>
+    If the block is not given, Ruby adds an implicit block of { |obj| obj }
+  </p>
+</section>
+<section>
+  <h2>
+    Enumerable#any?
+  </h2>
+  <p>
+    Return true if at least one of the collection members is not false or nil
+  </p>
+</section>
+<section class="center">
+  <pre><code class="ruby" contenteditable="">module Enumerable
+  def any?(obj)
+    # Your code goes here.
+  end
+end </code></pre>
+</section>
+<section class="center">
+  <pre><code class="ruby">module Enumerable
+  def any?(obj)
+    each { |element| return true if yield(element) }
+    false
+  end
+end </code></pre>
+</section>
+<section data-background="#000"></section>
 <section class="center" data-background="#000">
   <p class="white">
     Implementing #each turns a class into a collection

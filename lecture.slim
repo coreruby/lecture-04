@@ -472,6 +472,43 @@ section.center
 
 section data-background="#000"
 
+section
+  h2 Enumerable#any?
+  p Passes each element of the collection to the given block.
+
+section
+  h2 Enumerable#any?
+  p The method returns true if the block ever returns a value other than false or nil.
+
+section
+  h2 Enumerable#any?
+  p If the block is not given, Ruby adds an implicit block of { |obj| obj }
+
+section
+  h2 Enumerable#any?
+  p Return true if at least one of the collection members is not false or nil
+
+section.center
+  pre: code.ruby contenteditable=true
+    '
+      module Enumerable
+        def any?(obj)
+          # Your code goes here.
+        end
+      end
+
+section.center
+  pre: code.ruby
+    '
+      module Enumerable
+        def any?(obj)
+          each { |element| return true if yield(element) }
+          false
+        end
+      end
+
+section data-background="#000"
+
 
 section.center data-background="#000"
   p.white Implementing #each turns a class into a collection
