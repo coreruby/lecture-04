@@ -492,7 +492,7 @@ section.center
   pre: code.ruby contenteditable=true
     '
       module Enumerable
-        def any?(obj)
+        def any?
           # Your code goes here.
         end
       end
@@ -501,7 +501,7 @@ section.center
   pre: code.ruby
     '
       module Enumerable
-        def any?(obj)
+        def any?
           each { |element| return true if yield(element) }
           false
         end
@@ -509,6 +509,36 @@ section.center
 
 section data-background="#000"
 
+section
+  h2 Enumerable#all?
+  p Passes each element of the collection to the given block.
+
+section
+  h2 Enumerable#all?
+  p The method returns true if the block never returns false or nil
+
+section
+  h2 Enumerable#all?
+  p Return true when none of the collection members are false or nil
+
+section.center
+  pre: code.ruby contenteditable=true
+    '
+      module Enumerable
+        def all?
+          # Your code goes here.
+        end
+      end
+
+section.center
+  pre: code.ruby
+    '
+      module Enumerable
+        def all?
+          each { |element| return false unless yield(element) }
+          true
+        end
+      end
 
 section.center data-background="#000"
   p.white Implementing #each turns a class into a collection
