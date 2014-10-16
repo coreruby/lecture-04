@@ -703,9 +703,9 @@ end </code></pre>
 </section>
 <section>
   <h2>
-    Enumerable#each
+    Enumerable
   </h2>
-  <pre><code class="ruby">class Count
+  <pre><code class="ruby" contenteditable="">class Count
   include Enumerable
 
   def initialize(count)
@@ -719,10 +719,41 @@ end </code></pre>
 </section>
 <section>
   <h2>
-    Enumerable#each
+    Enumerable
   </h2>
-  <pre><code class="ruby">counter = Counter.new(5)
+  <pre><code class="ruby" contenteditable="">counter = Counter.new(5)
 counter.each { |time| puts time } </code></pre>
+</section>
+<section>
+  <h2>
+    Enumerable
+  </h2>
+  <p>
+    Top-level constants that are Enumerable
+  </p>
+  <p class="fragment">
+    Array, Hash, Struct, Range, IO, File, Dir, Enumerator, StringIO
+  </p>
+</section>
+<section>
+  <h2>
+    Enumerable
+  </h2>
+  <p>
+    Top-level constants that are Enumerable
+  </p>
+  <pre><code class="ruby" contenteditable="">Object.constants.map { |sym| Object.const_get sym } </code></pre>
+</section>
+<section>
+  <h2>
+    Enumerable
+  </h2>
+  <p>
+    Top-level constants that are Enumerable
+  </p>
+  <pre><code class="ruby" contenteditable="">Object.constants.map { |sym| Object.const_get sym }.select { |const|
+  const.is_a? Module and const.ancestors.include? Enumerable
+} </code></pre>
 </section>
 <section class="center">
   <p>

@@ -578,8 +578,8 @@ section.center data-background="#000"
   p.white Implementing #each turns a class into a collection
 
 section
-  h2 Enumerable#each
-  pre: code.ruby
+  h2 Enumerable
+  pre: code.ruby contenteditable=true
     '
       class Count
         include Enumerable
@@ -594,11 +594,32 @@ section
       end
 
 section
-  h2 Enumerable#each
-  pre: code.ruby
+  h2 Enumerable
+  pre: code.ruby contenteditable=true
     '
       counter = Counter.new(5)
       counter.each { |time| puts time }
+
+section
+  h2 Enumerable
+  p Top-level constants that are Enumerable
+  p.fragment Array, Hash, Struct, Range, IO, File, Dir, Enumerator, StringIO
+
+section
+  h2 Enumerable
+  p Top-level constants that are Enumerable
+  pre: code.ruby contenteditable=true
+    '
+      Object.constants.map { |sym| Object.const_get sym }
+
+section
+  h2 Enumerable
+  p Top-level constants that are Enumerable
+  pre: code.ruby contenteditable=true
+    '
+      Object.constants.map { |sym| Object.const_get sym }.select { |const|
+        const.is_a? Module and const.ancestors.include? Enumerable
+      }
 
 section.center
   p A good <a href="http://phrogz.net/programmingruby/tut_containers.html#blocksanditerators">read</a> for blocks and iterators in Ruby
