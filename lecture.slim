@@ -632,16 +632,37 @@ section
   h2 Array#[]
   pre: code.ruby contenteditable=true
     '
-      array = []
-      array[0] == nil
+      >> array = []
+      => []
+
+      >> array[0] == nil
+      => array[0] == nil
 
 section
   h2 Array#[]
   pre: code.ruby contenteditable=true
     '
-      array = [1, 2]
-      array[0]  == 1
-      array[-1] == 2
+      >> array = [1, 2]
+      => [1, 2]
+
+      >> array[0]  == 1
+      => true
+
+      >> array[-1] == 2
+      => true
+
+section
+  h2 Array#[]=
+  pre: code.ruby contenteditable=true
+    '
+      >> array = []
+      => []
+
+      >> array[2] = 3
+      => 3
+
+      >> array
+      => [nil, nil, 3]
 
 section
   h2 Array#first

@@ -772,16 +772,37 @@ counter.each { |time| puts time } </code></pre>
   <h2>
     Array#[]
   </h2>
-  <pre><code class="ruby" contenteditable="">array = []
-array[0] == nil </code></pre>
+  <pre><code class="ruby" contenteditable="">>> array = []
+=> []
+
+>> array[0] == nil
+=> array[0] == nil </code></pre>
 </section>
 <section>
   <h2>
     Array#[]
   </h2>
-  <pre><code class="ruby" contenteditable="">array = [1, 2]
-array[0]  == 1
-array[-1] == 2 </code></pre>
+  <pre><code class="ruby" contenteditable="">>> array = [1, 2]
+=> [1, 2]
+
+>> array[0]  == 1
+=> true
+
+>> array[-1] == 2
+=> true </code></pre>
+</section>
+<section>
+  <h2>
+    Array#[]=
+  </h2>
+  <pre><code class="ruby" contenteditable="">>> array = []
+=> []
+
+>> array[2] = 3
+=> 3
+
+>> array
+=> [nil, nil, 3] </code></pre>
 </section>
 <section>
   <h2>
