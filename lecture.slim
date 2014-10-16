@@ -621,5 +621,41 @@ section
         const.is_a? Module and const.ancestors.include? Enumerable
       }
 
+section.center data-background="#000"
+  p.white Array
+
+section
+  h2 Array
+  p A mutable collection, backed by an actual array
+
+section
+  h2 Array#[]
+  pre: code.ruby contenteditable=true
+    '
+      array = []
+      array[0] == nil
+
+section
+  h2 Array#[]
+  pre: code.ruby contenteditable=true
+    '
+      array = [1, 2]
+      array[0]  == 1
+      array[-1] == 2
+
+section
+  h2 Array#first
+  pre: code.ruby contenteditable=true
+    '
+      array = [1, 2]
+      array.first == array[0] == 1
+
+section
+  h2 Array#first
+  pre: code.ruby contenteditable=true
+    '
+      array = [1, 2, 3]
+      array.last == array[-1] == 3
+
 section.center
   p A good <a href="http://phrogz.net/programmingruby/tut_containers.html#blocksanditerators">read</a> for blocks and iterators in Ruby
