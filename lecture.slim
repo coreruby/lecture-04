@@ -667,7 +667,7 @@ section
       => []
 
       >> array[0] == nil
-      => array[0] == nil
+      => true
 
 section
   h2 Array#[]
@@ -751,6 +751,216 @@ section
 section
   h2 Hash
   p Which basically means its fast :)
+
+section
+  h2 Hash
+  p Uses the same literal as the block, kinda
+  pre: code.ruby
+    '
+      { 'key' => :value, [] => {}, Object.new => Enumerable }
+
+section
+  h2 Hash
+  p This creates problems if the first argument of a method is a hash
+  pre: code.ruby
+    '
+      assert_equal {one: 1, two: 2}, [[:one, 1], [:two, 2]].to_hash
+      syntax error, unexpected ':', expecting '}' (SyntaxError)
+         assert_equal {one: 1, two: 2}, [[:one, 1], [:two, 2]].to_hash
+
+section
+  h2 Hash
+  p They can store any value as a key or value
+  pre: code.ruby
+    '
+      { 'key' => :value, [] => {}, Object.new => Enumerable }
+
+section
+  h2 Hash
+  p Shortcut syntax for symbol keys
+  pre: code.ruby
+    '
+      { symbol_as_key: 42 }
+
+section
+  h2 Hash#[]
+  p By default the missing keys are nil
+  pre: code.ruby
+    '
+      >> hash = {}
+      => {}
+
+      >> hash[:missing_key] == nil
+      => true
+
+section
+  h2 Hash#[]=
+  pre: code.ruby
+    '
+      >> hash = {}
+      => {}
+
+      >> hash[:new_key] == 42
+      => 42
+
+      >> hash
+      => {:new_key=>42}
+
+section
+  h2 Hash.new
+  p We can specify default value on inexistent key with Hash.new
+  pre: code.ruby
+    '
+      h = Hash.new("Go Fish")
+      h["a"] = 100
+      h["b"] = 200
+      h["a"]           #=> 100
+      h["c"]           #=> "Go Fish"
+
+      # The following alters the single default object
+      h["c"].upcase!   #=> "GO FISH"
+      h["d"]           #=> "GO FISH"
+
+section
+  h2 Hash.new
+  p Can work with blocks too
+  pre: code.ruby
+    '
+      # While this creates a new default object each time
+      h = Hash.new { |hash, key| hash[key] = "Go Fish: " + key.to_s }
+      h["c"]           #=> "Go Fish: c"
+      h["c"].upcase!   #=> "GO FISH: C"
+      h["d"]           #=> "Go Fish: d"
+      h.keys           #=> ["c", "d"]
+
+section.center data-background="#000"
+  p No method is special enough not to accept a block
+
+section
+  h2 Hash.fetch
+  p The better Hash#[]
+  pre: code.ruby
+    '
+      h = { "a" => 100, "b" => 200 }
+      h.fetch("a")                            #=> 100
+      h.fetch("z", "go fish")                 #=> "go fish"
+      h.fetch("z") { |el| "go fish, #{el}"}   #=> "go fish, z"
+
+section
+  h2 Hash#fetch
+  p The better Hash#[]
+  pre: code.ruby
+    '
+      h = { "a" => 100, "b" => 200 }
+      h.fetch("z")                            #=> prog.rb:2:in `fetch': key not found (KeyError)
+
+section
+  h2 Hash#has_key?
+  p Whether a key is present in the hash
+  pre: code.ruby
+    '
+      h = { "a" => 100, "b" => 200 }
+      h.has_key?("a")   #=> true
+      h.has_key?("z")   #=> false
+
+section
+  h2 Hash#has_value?
+  p Whether a value is present in the hash
+  pre: code.ruby
+    '
+      h = { "a" => 100, "b" => 200 }
+      h.has_value?(100)   #=> true
+      h.has_value?(999)   #=> false
+
+section
+  h2 Hash#include?
+  p Comes from Enumerable, but its overridden for speed
+
+section
+  h2 Hash#merge
+  p Creates a new hash containing the contents of the current one and the argument of merge
+  pre: code.ruby
+    '
+      h1 = { "a" => 100, "b" => 200 }
+      h2 = { "b" => 254, "c" => 300 }
+
+      h1.merge(h2)   #=> {"a"=>100, "b"=>254, "c"=>300}
+      h1.merge(h2) { |key, oldval, newval| newval - oldval }
+
+                     #=> {"a"=>100, "b"=>54,  "c"=>300}
+      h1             #=> {"a"=>100, "b"=>200}
+
+section
+  h2 Hash#merge
+  p You're gonna use this a lot
+  pre: code.ruby
+    '
+      h1 = { "a" => 100, "b" => 200 }
+      h2 = { "b" => 254, "c" => 300 }
+
+      h1.merge(h2)   #=> {"a"=>100, "b"=>254, "c"=>300}
+      h1.merge(h2) { |key, oldval, newval| newval - oldval }
+
+                     #=> {"a"=>100, "b"=>54,  "c"=>300}
+      h1             #=> {"a"=>100, "b"=>200}
+
+section
+  h2 Hash#merge!
+  p The same as Hash#merge, but does its work in-place
+  pre: code.ruby
+    '
+      h1 = { "a" => 100, "b" => 200 }
+      h2 = { "b" => 254, "c" => 300 }
+      h1.merge!(h2)   #=> {"a"=>100, "b"=>254, "c"=>300}
+
+      h1 = { "a" => 100, "b" => 200 }
+      h2 = { "b" => 254, "c" => 300 }
+      h1.merge!(h2) { |key, v1, v2| v1 }
+                      #=> {"a"=>100, "b"=>200, "c"=>300}
+
+section
+  h2 Hash#merge!
+  p Accepts a block to customize the merging behaviour
+  pre: code.ruby
+    '
+      h1 = { "a" => 100, "b" => 200 }
+      h2 = { "b" => 254, "c" => 300 }
+      h1.merge!(h2)   #=> {"a"=>100, "b"=>254, "c"=>300}
+
+      h1 = { "a" => 100, "b" => 200 }
+      h2 = { "b" => 254, "c" => 300 }
+      h1.merge!(h2) { |key, v1, v2| v1 }
+                      #=> {"a"=>100, "b"=>200, "c"=>300}
+
+
+section
+  h2 Hash#each_key
+  p Iterates over each key
+  pre: code.ruby
+    '
+      { "a" => 100, "b" => 200 }.each_key { |key| puts key }
+
+section
+  h2 Hash#each_value
+  p Iterates over each value
+  pre: code.ruby
+    '
+      { "a" => 100, "b" => 200 }.each_value { |value| puts value }
+
+section
+  h2 Hash#each_pair
+  p Iterates over each pair
+  pre: code.ruby
+    '
+      { "a" => 100, "b" => 200 }.each_pair { |key, value| p key, value }
+
+section
+  h2 Hash#map
+  p Because its Enumerable, it has map
+
+section
+  h2 Hash#map
+  p It returns an Array, be aware of that
 
 section.center
   p A good <a href="http://phrogz.net/programmingruby/tut_containers.html#blocksanditerators">read</a> for blocks and iterators in Ruby

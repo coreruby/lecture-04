@@ -847,7 +847,7 @@ counter.each { |time| puts time } </code></pre>
 => []
 
 >> array[0] == nil
-=> array[0] == nil </code></pre>
+=> true </code></pre>
 </section>
 <section>
   <h2>
@@ -948,6 +948,106 @@ counter.each { |time| puts time } </code></pre>
   </h2>
   <p>
     Which basically means its fast :)
+  </p>
+</section>
+<section>
+  <h2>
+    Hash
+  </h2>
+  <p>
+    Uses the same literal as the block, kinda
+  </p>
+  <pre><code class="ruby">{ 'key' => :value, [] => {}, Object.new => Enumerable } </code></pre>
+</section>
+<section>
+  <h2>
+    Hash
+  </h2>
+  <p>
+    This creates problems if the first argument of a method is a hash
+  </p>
+  <pre><code class="ruby">assert_equal {one: 1, two: 2}, [[:one, 1], [:two, 2]].to_hash
+syntax error, unexpected ':', expecting '}' (SyntaxError)
+   assert_equal {one: 1, two: 2}, [[:one, 1], [:two, 2]].to_hash </code></pre>
+</section>
+<section>
+  <h2>
+    Hash
+  </h2>
+  <p>
+    They can store any value as a key or value
+  </p>
+  <pre><code class="ruby">{ 'key' => :value, [] => {}, Object.new => Enumerable } </code></pre>
+</section>
+<section>
+  <h2>
+    Hash
+  </h2>
+  <p>
+    Shortcut syntax for symbol keys
+  </p>
+  <pre><code class="ruby">{ symbol_as_key: 42 } </code></pre>
+</section>
+<section>
+  <h2>
+    Hash#[]
+  </h2>
+  <p>
+    By default the missing keys are nil
+  </p>
+  <pre><code class="ruby">>> hash = {}
+=> {}
+
+>> hash[:missing_key] == nil
+=> true </code></pre>
+</section>
+<section>
+  <h2>
+    Hash#[]=
+  </h2>
+  <pre><code class="ruby">>> hash = {}
+=> {}
+
+>> hash[:new_key] == 42
+=> 42
+
+>> hash
+=> {:new_key=>42} </code></pre>
+</section>
+<section>
+  <h2>
+    Hash.new
+  </h2>
+  <p>
+    We can specify default value on inexistent key with Hash.new
+  </p>
+  <pre><code class="ruby">h = Hash.new("Go Fish")
+h["a"] = 100
+h["b"] = 200
+h["a"]           #=> 100
+h["c"]           #=> "Go Fish"
+
+# The following alters the single default object
+h["c"].upcase!   #=> "GO FISH"
+h["d"]           #=> "GO FISH" </code></pre>
+</section>
+<section>
+  <h2>
+    Hash.new
+  </h2>
+  <p>
+    Can work with blocks too
+  </p>
+  <pre><code class="ruby"># While this creates a new default object each time
+h = Hash.new { |hash, key| hash[key] = "Go Fish: " + key.to_s }
+h["c"]           #=> "Go Fish: c"
+h["c"].upcase!   #=> "GO FISH: C"
+h["d"]           #=> "Go Fish: d"
+h.keys           #=> ["c", "d"] </code></pre>
+</section>
+<section class="center" data-background="#000">
+  <p>
+    No method is special enough not to accept a block
   </p>
 </section>
 <section class="center">
