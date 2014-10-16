@@ -668,15 +668,46 @@ section
   h2 Array#first
   pre: code.ruby contenteditable=true
     '
-      array = [1, 2]
-      array.first == array[0] == 1
+      >> array = [1, 2]
+      => [1, 2]
+
+      >> array.first == array[0] == 1
+      => true
 
 section
   h2 Array#last
   pre: code.ruby contenteditable=true
     '
-      array = [1, 2, 3]
-      array.last == array[-1] == 3
+      >> array = [1, 2, 3]
+      => [1, 2, 3]
+
+      >> array.last == array[-1] == 3
+      => true
+
+section
+  h2 Array#uniq
+  p Selects only the unique elements
+  pre: code.ruby contenteditable=true
+    '
+      >> array = [1, 2, 3, 3, 2, 1]
+      => [1, 2, 3, 3, 2, 1]
+
+      >> array.uniq
+      => [1 2, 3]
+
+section
+  h2 Array#compact
+  p Selects only the truthy elements
+  pre: code.ruby contenteditable=true
+    '
+      >> array = [0, "", false, nil]
+      => [0, "", false, nil]
+
+      >> array.compact
+      => [0, ""]
+
+section.center data-background="#000"
+  p.white Hash
 
 section.center
   p A good <a href="http://phrogz.net/programmingruby/tut_containers.html#blocksanditerators">read</a> for blocks and iterators in Ruby
