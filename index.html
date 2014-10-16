@@ -529,20 +529,28 @@ f(f(f(a0, a1), a2), a3) </pre>
   <h2>
     Enumerable#reduce
   </h2>
-  <pre><code class="ruby" contenteditable=""># Sum some numbers
-(5..10).reduce(:+)                             #=> 45
-
-# Same using a block and inject
+  <pre><code class="ruby" contenteditable=""># Same using a block and inject
 (5..10).inject { |sum, n| sum + n }            #=> 45
 
-# Multiply some numbers
-(5..10).reduce(1, :*)                          #=> 151200
-
-# Same using a block
+# Sum some numbers
+(5..10).reduce(:+)                             #=> 45 </code></pre>
+</section>
+<section>
+  <h2>
+    Enumerable#reduce
+  </h2>
+  <pre><code class="ruby" contenteditable=""># Same using a block
 (5..10).inject(1) { |product, n| product * n } #=> 151200
 
-# find the longest word
-longest = %w{ cat sheep bear }.inject do |memo, word|
+# Multiply some numbers
+(5..10).reduce(1, :*)                          #=> 151200 </code></pre>
+</section>
+<section>
+  <h2>
+    Enumerable#reduce
+  </h2>
+  <pre><code class="ruby" contenteditable=""># find the longest word
+longest = %w(cat sheep bear).inject do |memo, word|
    memo.length > word.length ? memo : word
 end
 longest </code></pre>
@@ -695,7 +703,7 @@ end </code></pre>
   <pre><code class="ruby">counter = Counter.new(5)
 counter.each { |time| puts time } </code></pre>
 </section>
-<section class="center" data-background="#000">
+<section class="center">
   <p>
     A good <a href="http://phrogz.net/programmingruby/tut_containers.html#blocksanditerators">read</a> for blocks and iterators in Ruby
   </p>
