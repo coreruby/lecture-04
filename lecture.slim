@@ -377,8 +377,33 @@ section
   h2 Enumerable#select
   p Let's checkout how <a href="https://github.com/rubinius/rubinius/blob/master/kernel/common/enumerable.rb#L450-L461">Rubinius</a> implemented it
 
-section.center data-background="#000"
-  p.white Implementing #each turns a class into a collection
+section data-background="#000"
+
+section
+  h2 Enumerable#reject
+  p The opposite of Enumerable#select
+
+section.center
+  pre: code.ruby contenteditable=true
+    '
+      module Enumerable
+        def reject
+          # Your code goes here.
+        end
+      end
+
+section.center
+  pre: code.ruby
+    '
+      module Enumerable
+        def reject
+          result = []
+          each { |element| result << element unless yield(element) }
+          result
+        end
+      end
+
+section data-background="#000"
 
 section
   h2 Enumerable#reduce

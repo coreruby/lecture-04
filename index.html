@@ -487,11 +487,32 @@ end </code></pre>
     Let's checkout how <a href="https://github.com/rubinius/rubinius/blob/master/kernel/common/enumerable.rb#L450-L461">Rubinius</a> implemented it
   </p>
 </section>
-<section class="center" data-background="#000">
-  <p class="white">
-    Implementing #each turns a class into a collection
+<section data-background="#000"></section>
+<section>
+  <h2>
+    Enumerable#reject
+  </h2>
+  <p>
+    The opposite of Enumerable#select
   </p>
 </section>
+<section class="center">
+  <pre><code class="ruby" contenteditable="">module Enumerable
+  def reject
+    # Your code goes here.
+  end
+end </code></pre>
+</section>
+<section class="center">
+  <pre><code class="ruby">module Enumerable
+  def reject
+    result = []
+    each { |element| result << element unless yield(element) }
+    result
+  end
+end </code></pre>
+</section>
+<section data-background="#000"></section>
 <section>
   <h2>
     Enumerable#reduce
