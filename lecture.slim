@@ -844,7 +844,7 @@ section
       h = { "a" => 100, "b" => 200 }
       h.fetch("a")                            #=> 100
       h.fetch("z", "go fish")                 #=> "go fish"
-      h.fetch("z") { |el| "go fish, #{el}"}   #=> "go fish, z"
+      h.fetch("z") { |el| "go fish, \#{el}"}  #=> "go fish, z"
 
 section
   h2 Hash#fetch

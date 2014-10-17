@@ -1050,6 +1050,165 @@ h.keys           #=> ["c", "d"] </code></pre>
     No method is special enough not to accept a block
   </p>
 </section>
+<section>
+  <h2>
+    Hash.fetch
+  </h2>
+  <p>
+    The better Hash#[]
+  </p>
+  <pre><code class="ruby">h = { "a" => 100, "b" => 200 }
+h.fetch("a")                            #=> 100
+h.fetch("z", "go fish")                 #=> "go fish"
+h.fetch("z") { |el| "go fish, #{el}"}  #=> "go fish, z" </code></pre>
+</section>
+<section>
+  <h2>
+    Hash#fetch
+  </h2>
+  <p>
+    The better Hash#[]
+  </p>
+  <pre><code class="ruby">h = { "a" => 100, "b" => 200 }
+h.fetch("z")                            #=> prog.rb:2:in `fetch': key not found (KeyError) </code></pre>
+</section>
+<section>
+  <h2>
+    Hash#has_key?
+  </h2>
+  <p>
+    Whether a key is present in the hash
+  </p>
+  <pre><code class="ruby">h = { "a" => 100, "b" => 200 }
+h.has_key?("a")   #=> true
+h.has_key?("z")   #=> false </code></pre>
+</section>
+<section>
+  <h2>
+    Hash#has_value?
+  </h2>
+  <p>
+    Whether a value is present in the hash
+  </p>
+  <pre><code class="ruby">h = { "a" => 100, "b" => 200 }
+h.has_value?(100)   #=> true
+h.has_value?(999)   #=> false </code></pre>
+</section>
+<section>
+  <h2>
+    Hash#include?
+  </h2>
+  <p>
+    Comes from Enumerable, but its overridden for speed
+  </p>
+</section>
+<section>
+  <h2>
+    Hash#merge
+  </h2>
+  <p>
+    Creates a new hash containing the contents of the current one and the argument of merge
+  </p>
+  <pre><code class="ruby">h1 = { "a" => 100, "b" => 200 }
+h2 = { "b" => 254, "c" => 300 }
+
+h1.merge(h2)   #=> {"a"=>100, "b"=>254, "c"=>300}
+h1.merge(h2) { |key, oldval, newval| newval - oldval }
+
+               #=> {"a"=>100, "b"=>54,  "c"=>300}
+h1             #=> {"a"=>100, "b"=>200} </code></pre>
+</section>
+<section>
+  <h2>
+    Hash#merge
+  </h2>
+  <p>
+    You're gonna use this a lot
+  </p>
+  <pre><code class="ruby">h1 = { "a" => 100, "b" => 200 }
+h2 = { "b" => 254, "c" => 300 }
+
+h1.merge(h2)   #=> {"a"=>100, "b"=>254, "c"=>300}
+h1.merge(h2) { |key, oldval, newval| newval - oldval }
+
+               #=> {"a"=>100, "b"=>54,  "c"=>300}
+h1             #=> {"a"=>100, "b"=>200} </code></pre>
+</section>
+<section>
+  <h2>
+    Hash#merge!
+  </h2>
+  <p>
+    The same as Hash#merge, but does its work in-place
+  </p>
+  <pre><code class="ruby">h1 = { "a" => 100, "b" => 200 }
+h2 = { "b" => 254, "c" => 300 }
+h1.merge!(h2)   #=> {"a"=>100, "b"=>254, "c"=>300}
+
+h1 = { "a" => 100, "b" => 200 }
+h2 = { "b" => 254, "c" => 300 }
+h1.merge!(h2) { |key, v1, v2| v1 }
+                #=> {"a"=>100, "b"=>200, "c"=>300} </code></pre>
+</section>
+<section>
+  <h2>
+    Hash#merge!
+  </h2>
+  <p>
+    Accepts a block to customize the merging behaviour
+  </p>
+  <pre><code class="ruby">h1 = { "a" => 100, "b" => 200 }
+h2 = { "b" => 254, "c" => 300 }
+h1.merge!(h2)   #=> {"a"=>100, "b"=>254, "c"=>300}
+
+h1 = { "a" => 100, "b" => 200 }
+h2 = { "b" => 254, "c" => 300 }
+h1.merge!(h2) { |key, v1, v2| v1 }
+                #=> {"a"=>100, "b"=>200, "c"=>300} </code></pre>
+</section>
+<section>
+  <h2>
+    Hash#each_key
+  </h2>
+  <p>
+    Iterates over each key
+  </p>
+  <pre><code class="ruby">{ "a" => 100, "b" => 200 }.each_key { |key| puts key } </code></pre>
+</section>
+<section>
+  <h2>
+    Hash#each_value
+  </h2>
+  <p>
+    Iterates over each value
+  </p>
+  <pre><code class="ruby">{ "a" => 100, "b" => 200 }.each_value { |value| puts value } </code></pre>
+</section>
+<section>
+  <h2>
+    Hash#each_pair
+  </h2>
+  <p>
+    Iterates over each pair
+  </p>
+  <pre><code class="ruby">{ "a" => 100, "b" => 200 }.each_pair { |key, value| p key, value } </code></pre>
+</section>
+<section>
+  <h2>
+    Hash#map
+  </h2>
+  <p>
+    Because its Enumerable, it has map
+  </p>
+</section>
+<section>
+  <h2>
+    Hash#map
+  </h2>
+  <p>
+    It returns an Array, be aware of that
+  </p>
+</section>
 <section class="center">
   <p>
     A good <a href="http://phrogz.net/programmingruby/tut_containers.html#blocksanditerators">read</a> for blocks and iterators in Ruby
